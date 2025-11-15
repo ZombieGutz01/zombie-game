@@ -7,10 +7,25 @@
 </head>
 
 <body>
+
+  <!-- Background music -->
+  <audio id="bgm" src="sleepless.mp3" autoplay loop></audio>
+
   <div id="game-container">
     <div id="text-box"></div>
     <div id="choices"></div>
   </div>
+
+  <!-- Required Bensound credit -->
+  <footer style="margin-top: 20px; font-size: 14px; opacity: 0.7; text-align: center;">
+    Music: "Sleepless" by Bensound.com
+  </footer>
+
+  <script>
+    /* Lower the music volume */
+    const bgm = document.getElementById("bgm");
+    bgm.volume = 0.25;  
+  </script>
 
   <script src="script.js"></script>
 </body>
