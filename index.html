@@ -1,32 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zombie Story Game</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0d0d0d;
+      color: #e8e8e8;
+      font-family: sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Centered Game Container */
+    #game-container {
+      text-align: center;
+      max-width: 700px;
+      padding: 20px;
+    }
+
+    #text {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .choices {
+      margin-top: 20px;
+    }
+
+    button.choice-btn {
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    button.choice-btn:hover {
+      background: #555;
+    }
+
+    /* Bottom-left music credit */
+    #music-credit {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      font-size: 0.9rem;
+      opacity: 0.75;
+    }
+
+    /* Bottom-right audio toggle */
+    #audio-toggle {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background: #333;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      cursor: pointer;
+      border-radius: 5px;
+      opacity: 0.9;
+    }
+
+    #audio-toggle:hover {
+      background: #555;
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- Background music -->
-  <audio id="bgm" src="sleepless.mp3" autoplay loop></audio>
-
+  <!-- CENTER GAME CONTENT -->
   <div id="game-container">
-    <div id="text-box"></div>
-    <div id="choices"></div>
+    <div id="text">Welcome to the zombie story!</div>
+
+    <div class="choices" id="choices">
+      <button class="choice-btn">Choice A</button>
+      <button class="choice-btn">Choice B</button>
+    </div>
   </div>
 
-  <!-- Required Bensound credit -->
-  <footer style="margin-top: 20px; font-size: 14px; opacity: 0.7; text-align: center;">
-    Music: "Sleepless" by Bensound.com
-  </footer>
+  <!-- MUSIC CREDIT (BOTTOM LEFT) -->
+  <div id="music-credit">
+    Music: "Sleepless" by Bensound.com — Licensed under CC BY-ND 4.0
+  </div>
+
+  <!-- MUSIC ON/OFF BUTTON (BOTTOM RIGHT) -->
+  <button id="audio-toggle">🔊 On</button>
+
+  <!-- AUDIO ELEMENT -->
+  <audio id="bgm" loop>
+    <source src="audio/sleepless.mp3" type="audio/mpeg" />
+  </audio>
 
   <script>
-    /* Lower the music volume */
-    const bgm = document.getElementById("bgm");
-    bgm.volume = 0.25;  
+    const audio = document.getElementById("bgm");
+    const toggle = document.getElementById("audio-toggle");
+
+    let isPlaying = false;
+
+    toggle.addEventListener("click", () => {
+      if (isPlaying) {
+        audio.pause();
+        toggle.textContent = "🔇 Off";
+        isPlaying = false;
+      } else {
+        audio.play();
+        toggle.textContent = "🔊 On";
+        isPlaying = true;
+      }
+    });
   </script>
 
-  <script src="script.js"></script>
 </body>
 </html>
