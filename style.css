@@ -1,0 +1,38 @@
+body {
+  background: #111;
+  color: #eee;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+#game-container {
+  width: 600px;
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#text-box {
+  font-size: 18px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+button {
+  display: block;
+  width: 100%;
+  background: #333;
+  color: #eee;
+  border: 1px solid #444;
+  padding: 10px;
+  margin: 6px 0;
+  cursor: pointer;
+  border-radius: 6px;
+  text-align: left;
+}
+
+button:hover {
+  background: #444;
+}
