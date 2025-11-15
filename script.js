@@ -10,14 +10,14 @@ const scenes = {
   },
 
   approach: {
-    text: "A ragged, half-decayed guy stumbles back. His eyes widen. \"D-don’t hurt me...\"",
+    text: "A green man hears you, quickly turning around and falling into a sitting position. \"D-don’t hurt me...\"",
     choices: [
-      { text: "Wait. You can talk?", next: "talk1" }
+      { text: "You can... talk? But zombies can't talk!", next: "talk1" }
     ]
   },
 
   callout: {
-    text: "\"I-I'm not... dangerous,\" a shaky voice answers.",
+    text: "\"Yeah... my decay hasen't reached certain parts of my body yet,\" a shaky voice answers.",
     choices: [
       { text: "Step closer slowly.", next: "approach" }
     ]
