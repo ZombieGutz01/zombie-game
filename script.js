@@ -1,51 +1,46 @@
 // --- SCENE DATA ---
 const scenes = {
   intro: {
-    text: "You hear shuffling in your base. Something... someone... is inside.",
+    text: "As you walk further inside your base, you hear a shuffling noise come from your supplies room.",
     choices: [
-      { text: "Grab a weapon and approach.", next: "approach" },
-      { text: "Call out: 'Who's there?'", next: "callout" },
-      { text: "Hide and observe quietly.", next: "observe" }
+      { text: "Yell out", next: "yell1" },
+      { text: "Peek around the corner", next: "peek" }
     ]
   },
 
-  approach: {
-    text: "A green man hears you, quickly turning around and falling into a sitting position. \"D-don’t hurt me...\"",
+  yell1: {
+    text: "“Who’s there?!” you yell out. The noises suddenly stop.",
     choices: [
-      { text: "You can... talk? But zombies can't talk!", next: "talk1" }
+      { text: "Yell out again", next: "yell2" },
+      { text: "Slowly walk in", next: "enter" }
     ]
   },
 
-  callout: {
-    text: "\"Yeah... my decay hasen't reached certain parts of my body yet,\" a shaky voice answers.",
+  peek: {
+    text: "You slowly look around the corner, and see a man—no, a zombie—digging through your food!",
     choices: [
-      { text: "Step closer slowly.", next: "approach" }
+      { text: "Slowly walk in", next: "enter" }
     ]
   },
 
-  observe: {
-    text: "You peek around a corner. A zombie-looking man is rummaging for food... but gently?",
+  yell2: {
+    text: "“Hello? Who’s there?!”",
     choices: [
-      { text: "Reveal yourself.", next: "approach" }
+      { text: "Slowly walk in", next: "enter" }
     ]
   },
 
-  talk1: {
-    text: "\"Y-yeah... a little,\" he murmurs. His voice cracks.",
+  enter: {
+    text: "A man… no, a zombie. A zombie seems to have been digging through your food. Some has been eaten. He turns to you and says, “I'm sorry, I thought this place was abandoned.”",
     choices: [
-      { text: "Ask who he is.", next: "endDemo" }
+      // Add more choices here when you continue your story!
     ]
-  },
-
-  endDemo: {
-    text: "End of demo scene. You can now start adding your own!",
-    choices: []
   }
 };
 
 
 // --- GAME ENGINE ---
-const textBox = document.getElementById("text-box");
+const textBox = document.getElementById("text");
 const choiceBox = document.getElementById("choices");
 
 function loadScene(key) {
@@ -61,14 +56,16 @@ function loadScene(key) {
   scene.choices.forEach(choice => {
     const btn = document.createElement("button");
     btn.textContent = choice.text;
+    btn.className = "choice-btn";
     btn.onclick = () => loadScene(choice.next);
     choiceBox.appendChild(btn);
   });
 
-  // If no choices, offer a restart
+  // If no choices, offer restart
   if (scene.choices.length === 0) {
     const restart = document.createElement("button");
     restart.textContent = "Restart";
+    restart.className = "choice-btn";
     restart.onclick = () => loadScene("intro");
     choiceBox.appendChild(restart);
   }
